@@ -1,15 +1,22 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable consistent-return */
-import { FaPlusCircle, FaSpinner } from 'react-icons/fa';
+
+import { FaSpinner } from 'react-icons/fa';
 import { useCallback, useEffect, useState } from 'react';
+
+import SVG from 'react-inlinesvg';
 
 import { createTodo } from '../api/todo';
 import useFocus from '../hooks/useFocus';
 import { TodoProps } from '../@types';
+import { getSearchData } from '../api/search';
+import Dropdown from './Dropdown';
 
 const InputTodo = ({ setTodos }: any) => {
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { ref, setFocus } = useFocus<any>();
+  const [searchList, setSearchList] = useState<[] | undefined>(undefined);
 
   useEffect(() => {
     setFocus();
@@ -43,24 +50,28 @@ const InputTodo = ({ setTodos }: any) => {
     [inputText, setTodos],
   );
 
+  useEffect(() => {
+    getSearchData(inputText, setSearchList);
+  }, [inputText]);
+
   return (
-    <form className="form-container" onSubmit={handleSubmit}>
-      <input
-        className="input-text"
-        placeholder="Add new todo..."
-        ref={ref}
-        value={inputText}
-        onChange={(e) => setInputText(e.target.value)}
-        disabled={isLoading}
-      />
-      {!isLoading ? (
+    <>
+      <form className="form-container" onSubmit={handleSubmit}>
         <button className="input-submit" type="submit">
-          <FaPlusCircle className="btn-plus" />
+          <SVG src="/svg/search.svg" className="search-svg" />
         </button>
-      ) : (
-        <FaSpinner className="spinner" />
-      )}
-    </form>
+        <input
+          className="input-text"
+          placeholder="Add new todo..."
+          ref={ref}
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          disabled={isLoading}
+        />
+        {isLoading && <FaSpinner className="spinner" />}
+      </form>
+      {searchList?.length !== 0 && <Dropdown searchData={searchList} />}
+    </>
   );
 };
 
