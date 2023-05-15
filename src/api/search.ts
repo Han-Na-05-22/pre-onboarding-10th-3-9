@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import apiRequest from './index';
 
 // getSearch API data
@@ -13,8 +14,10 @@ export const getSearchData = async (data: string, setData: any) => {
     const response = await apiRequest
       .get(`/search/?q=${data}&page=1&limit=10`)
       .then((res: any) => {
-        localStorage.setItem(data, JSON.stringify(res.data.result));
-        return res.data.result;
+        if (res.data.result.length !== 0) {
+          localStorage.setItem(data, JSON.stringify(res.data.result));
+          return res.data.result;
+        }
       })
       .catch((err) => console.log('err', err));
 

@@ -13,8 +13,8 @@ import { getSearchData } from '../api/search';
 import Dropdown from './Dropdown';
 
 const InputTodo = ({ setTodos }: any) => {
-  const [inputText, setInputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [inputText, setInputText] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { ref, setFocus } = useFocus<any>();
   const [searchList, setSearchList] = useState<[] | undefined>(undefined);
 
@@ -70,7 +70,9 @@ const InputTodo = ({ setTodos }: any) => {
         />
         {isLoading && <FaSpinner className="spinner" />}
       </form>
-      {searchList?.length !== 0 && <Dropdown searchData={searchList} />}
+      {searchList?.length !== 0 && inputText.length !== 0 && (
+        <Dropdown searchData={searchList} setInputText={setInputText} />
+      )}
     </>
   );
 };

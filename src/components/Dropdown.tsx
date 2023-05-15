@@ -1,22 +1,16 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
 
 /* eslint-disable react/no-array-index-key */
-const Dropdown = (searchData: any) => {
-  const [dropData, setDropData] = useState<any[]>([]);
-
-  useEffect(() => {
-    if (searchData !== undefined) {
-      setDropData(searchData?.searchData);
-    }
-  }, [searchData]);
-
+const Dropdown = ({ searchData, setInputText }: any) => {
   return (
     <div className="dropdown-container">
-      {searchData !== undefined && dropData && (
+      {searchData !== undefined && (
         <ul className="dropdown-list">
-          {dropData.map((i: string, idx: number) => (
+          {searchData.map((i: string, idx: number) => (
             <li key={idx}>
-              <p>{i}</p>
+              <p onClick={() => setInputText(i)}>{i}</p>
             </li>
           ))}
         </ul>

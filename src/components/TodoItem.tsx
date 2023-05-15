@@ -6,7 +6,7 @@ import { deleteTodo } from '../api/todo';
 import { TodoProps } from '../@types';
 
 const TodoItem = ({ id, title, setTodos }: { id: string; title: string; setTodos: any }) => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const handleRemoveTodo = useCallback(async () => {
     try {
