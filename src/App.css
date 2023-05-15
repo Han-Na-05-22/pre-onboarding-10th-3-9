@@ -178,7 +178,7 @@ ul {
   border-radius: 5px;
   width: 364px;
   height: 164px;
-  padding: 15px 17px;
+  padding: 15px 5px;
   display: flex;
   flex-direction: column;
   gap: 8px 0px;
@@ -191,15 +191,29 @@ ul {
   font-family: 'Roboto';
   font-weight: 400;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 28px;
+  height: 28px;
   display: flex;
+  padding: 0px 12px;
   align-items: center;
   letter-spacing: 0.02em;
   text-overflow: ellipsis;
+  cursor: pointer;
+  border: 2px solid red;
+  transition: 0.1s;
+}
+
+.dropdown-list li:hover {
+  background: #f2f2f2;
+}
+
+.dropdown-list li:active {
+  background: #d5f4f1;
 }
 
 .dropdown-container li p {
   display: block;
+  height: 28px;
   width: 364px;
   text-overflow: ellipsis;
   white-space: nowrap;

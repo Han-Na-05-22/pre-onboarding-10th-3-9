@@ -13,8 +13,8 @@ import { getSearchData } from '../api/search';
 import Dropdown from './Dropdown';
 
 const InputTodo = ({ setTodos }: any) => {
-  const [inputText, setInputText] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [inputText, setInputText] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { ref, setFocus } = useFocus<any>();
   const [searchList, setSearchList] = useState<[] | undefined>(undefined);
 
