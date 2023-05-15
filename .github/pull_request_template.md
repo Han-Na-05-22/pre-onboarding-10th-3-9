@@ -7,7 +7,6 @@
 - [ ] Documentation content changes
 - [ ] Other... Please describe:
 
-
 ## 🤹‍♀️ What is the current behavior?
 
 - [ ] Please describe the current behavior
