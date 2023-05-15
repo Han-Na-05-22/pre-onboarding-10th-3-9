@@ -70,7 +70,9 @@ const InputTodo = ({ setTodos }: any) => {
         />
         {isLoading && <FaSpinner className="spinner" />}
       </form>
-      {searchList?.length !== 0 && <Dropdown searchData={searchList} />}
+      {searchList?.length !== 0 && inputText.length !== 0 && (
+        <Dropdown searchData={searchList} setInputText={setInputText} />
+      )}
     </>
   );
 };

@@ -177,7 +177,8 @@ ul {
   box-shadow: 0px 0px 1px rgba(50, 50, 50, 0.05), 0px 2px 4px rgba(50, 50, 50, 0.1);
   border-radius: 5px;
   width: 364px;
-  height: 164px;
+  height: 100%;
+  max-height: 164px;
   padding: 15px 5px;
   display: flex;
   flex-direction: column;
@@ -199,7 +200,6 @@ ul {
   letter-spacing: 0.02em;
   text-overflow: ellipsis;
   cursor: pointer;
-  border: 2px solid red;
   transition: 0.1s;
 }
 
